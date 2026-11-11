@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vaishnavi Swami – Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef2f4; --surface:#ffffff; --ink:#14213d; --muted:#4d5b70; --line:#cdd7de;
+  --teal:#0b7a85; --amber:#c27a00; --tealsoft:#d9eef0;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0f1b26;--surface:#162636;--ink:#e6eef4;--muted:#a3b3c2;--line:#2b4054;--teal:#4fc3cd;--amber:#f0b44a;--tealsoft:#17404a}
+}
+:root[data-theme="dark"]{--bg:#0f1b26;--surface:#162636;--ink:#e6eef4;--muted:#a3b3c2;--line:#2b4054;--teal:#4fc3cd;--amber:#f0b44a;--tealsoft:#17404a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+nav{display:flex;gap:22px;flex-wrap:wrap;padding:22px 0;font-family:var(--head);font-weight:500;font-size:16px}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--teal)}
+h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0}
+h1{font-size:clamp(40px,8vw,72px);font-weight:700;letter-spacing:-.02em}
+h2{font-size:30px;font-weight:700;margin-bottom:22px}
+h3{font-size:20px;font-weight:700}
+.hero{padding:34px 0 50px}
+.role{font-family:var(--head);font-size:clamp(20px,3.4vw,26px);color:var(--teal);margin:10px 0 22px;font-weight:500}
+.lead{max-width:62ch;font-size:20px}
+/* pipeline: the one moving element */
+.pipe{display:flex;align-items:stretch;gap:0;margin:38px 0 6px;font-family:var(--head)}
+.stage{flex:1;background:var(--surface);border:2px solid var(--line);padding:14px 10px;text-align:center;font-weight:700;font-size:15px;position:relative;animation:light 8s infinite}
+.stage small{display:block;font-weight:500;color:var(--muted);font-size:12.5px;margin-top:2px}
+.stage:not(:last-child){border-right-width:0}
+.stage:first-child{border-radius:10px 0 0 10px}.stage:last-child{border-radius:0 10px 10px 0}
+.stage:nth-child(2){animation-delay:2s}.stage:nth-child(3){animation-delay:4s}.stage:nth-child(4){animation-delay:6s}
+@keyframes light{0%,22%{border-color:var(--teal);background:var(--tealsoft)}28%,100%{border-color:var(--line);background:var(--surface)}}
+@media (prefers-reduced-motion:reduce){.stage{animation:none}}
+.pipecap{color:var(--muted);font-size:15px;margin:8px 0 0}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{font-family:var(--head);font-weight:700;font-size:16px;padding:12px 20px;border-radius:8px;text-decoration:none;border:2px solid var(--ink);color:var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+section{padding:46px 0;border-top:2px solid var(--line)}
+.job{display:grid;grid-template-columns:150px 1fr;gap:6px 26px;margin-bottom:8px}
+.when{font-family:var(--head);font-weight:500;color:var(--muted);font-size:15px;padding-top:4px}
+.job ul,.proj ul{margin:12px 0 0;padding-left:20px}
+.job li,.proj li{margin-bottom:8px}
+.sub{color:var(--muted);margin:2px 0 0}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:18px 34px}
+.skills h3{font-size:17px;margin-bottom:6px;color:var(--teal)}
+.skills p{margin:0;font-size:16.5px}
+.proj{background:var(--surface);border-left:6px solid var(--teal);padding:22px 24px;border-radius:0 10px 10px 0}
+.stack{font-family:var(--head);font-size:14.5px;color:var(--muted);margin:6px 0 0}
+details{background:var(--surface);border:2px solid var(--line);border-radius:10px;margin-bottom:14px}
+summary{cursor:pointer;list-style:none;padding:16px 20px;font-family:var(--head);font-weight:700;font-size:19px;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--teal);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details[open]{border-color:var(--teal)}
+.note-body{padding:0 20px 18px}
+.note-body p{margin:0 0 12px}
+.note-tag{font-family:var(--head);font-size:14px;color:var(--muted);padding:0 20px 8px}
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.edu div,.cert{background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:16px 18px}
+.edu p,.cert p{margin:4px 0 0;color:var(--muted);font-size:16px}
+.certs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+footer{padding:40px 0 60px;border-top:2px solid var(--line);color:var(--muted);font-size:16px}
+@media (max-width:640px){
+  body{font-size:17px}
+  .job,.skills,.edu,.certs{grid-template-columns:1fr}
+  .pipe{flex-direction:column}
+  .stage,.stage:first-child,.stage:last-child{border-radius:0;border-right-width:2px}
+  .stage:not(:last-child){border-bottom-width:0}
+  .stage:first-child{border-radius:10px 10px 0 0}.stage:last-child{border-radius:0 0 10px 10px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Sections">
+  <a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#project">Project</a><a href="#notes">Notes</a><a href="#contact">Contact</a>
+</nav>
+
+<header class="hero" id="top">
+  <h1>Vaishnavi Swami</h1>
+  <p class="role">Data Engineer, Pune</p>
+  <p class="lead">I build and look after data pipelines for banking projects at HSBC, through Synechron. I work with Python, PySpark, SQL and Airflow, and I care about data that arrives on time and can be trusted.</p>
+
+  <div class="pipe" role="img" aria-label="Pipeline stages: Ingest, Transform, Validate, Deliver">
+    <div class="stage">Ingest<small>HDFS, files</small></div>
+    <div class="stage">Transform<small>PySpark, SQL</small></div>
+    <div class="stage">Validate<small>checks, reconciliation</small></div>
+    <div class="stage">Deliver<small>reports, Airflow</small></div>
+  </div>
+  <p class="pipecap">How most of my work flows, from raw data to a report someone can rely on.</p>
+
+  <div class="cta">
+    <a class="btn main" href="mailto:vaishsswami@gmail.com">Email me</a>
+    <a class="btn" href="#work">See my work</a>
+  </div>
+</header>
+
+<section id="about">
+  <h2>About</h2>
+  <p>I have more than three years of experience in data engineering. My work covers ETL pipelines, data transformation, automated data quality checks, and production support. I also tune SQL queries and Spark jobs when they run slowly.</p>
+  <p>I started my career with a Java background and moved into data engineering. I enjoy the part of the job where a failing pipeline becomes a clear root cause and a lasting fix.</p>
+</section>
+
+<section id="work">
+  <h2>Work experience</h2>
+  <div class="job">
+    <div class="when">Sept 2023 – Present</div>
+    <div>
+      <h3>Data Engineer, Synechron</h3>
+      <p class="sub">Client: HSBC, Pune</p>
+      <ul>
+        <li>Develop and maintain ETL pipelines in Python, PySpark and SQL for banking data transformation and reporting.</li>
+        <li>Implement business rules across Global Treasury, Liquidity and Collateralized Loan Obligations (CLO) reporting, including ESMA reporting requirements.</li>
+        <li>Process large datasets on Hadoop HDFS in Parquet and Delta formats, using partitioning and tuning to make pipelines run faster.</li>
+        <li>Build reusable transformation workflows with PySpark and Prophecy that deliver validated outputs.</li>
+        <li>Add data quality checks: null checks, schema validation, primary-key checks, reconciliation and consistency checks.</li>
+        <li>Schedule and monitor 20+ Airflow DAGs that support 15+ data pipelines.</li>
+        <li>Monitor runs, troubleshoot failures, find root causes and help recover production workflows.</li>
+        <li>Automate repetitive data-processing tasks to cut manual effort.</li>
+        <li>Work with analytics and business teams to understand requirements and deliver reliable datasets.</li>
+        <li>Use Git and Jenkins for version control, code reviews, testing and deployments across DEV, UAT and PROD.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div><h3>Languages</h3><p>Python, SQL, PySpark</p></div>
+    <div><h3>Big data</h3><p>Apache Spark, Spark SQL, Hadoop, HDFS, Parquet, Delta Lake, data partitioning</p></div>
+    <div><h3>Data engineering</h3><p>ETL/ELT, data pipelines, data integration, data lake, data warehousing, data modelling, incremental processing, data quality</p></div>
+    <div><h3>SQL</h3><p>Joins, subqueries, CTEs, window functions, aggregations, query optimization, schema validation, data reconciliation</p></div>
+    <div><h3>Cloud</h3><p>Azure Databricks, Azure Data Factory, Azure Data Lake Storage Gen2, AWS fundamentals</p></div>
+    <div><h3>Tools and practice</h3><p>Airflow, Prophecy, Jenkins, Git, CI/CD, pipeline monitoring, failure handling, performance tuning, debugging, unit testing</p></div>
+  </div>
+</section>
+
+<section id="project">
+  <h2>Project</h2>
+  <div class="proj">
+    <h3>Azure data integration pipeline</h3>
+    <p class="stack">Azure Data Factory, Azure Data Lake Storage Gen2, PySpark, SQL</p>
+    <ul>
+      <li>Built parameterized Data Factory pipelines that fetch data from HTTP sources and store the files in Data Lake Storage Gen2.</li>
+      <li>Used parameters, JSON arrays and ForEach activities so one pipeline can handle many files and folders.</li>
+      <li>Applied PySpark and SQL transformations and validation to prepare consistent outputs for analysis.</li>
+      <li>Used Data Lake Storage Gen2 as one central place to organize processed datasets.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="notes">
+  <h2>Notes</h2>
+  <p style="color:var(--muted);margin-top:-8px">Short plain-language explainers on things I use every day. Tap one to open it.</p>
+  <details>
+    <summary>What does a data quality check actually check?</summary>
+    <div class="note-tag">Data quality · 2 min read</div>
+    <div class="note-body">
+      <p>Think of it as a checklist run on data before anyone uses it. Is anything empty that should not be (null check)? Do the columns match what we expect (schema check)? Is every row unique where it should be (primary-key check)? Do the numbers match the source system (reconciliation)?</p>
+      <p>If a check fails, the pipeline should stop or raise an alert instead of passing bad data to a report.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Why Airflow? A simple view of scheduling pipelines</summary>
+    <div class="note-tag">Orchestration · 2 min read</div>
+    <div class="note-body">
+      <p>A pipeline usually has many steps, and some must finish before others start. Airflow lets you write those steps as a DAG, a graph of tasks with a clear order, and runs them on a schedule.</p>
+      <p>It also retries failed tasks, shows what failed and when, and makes it easy to rerun only the part that broke.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Incremental processing: don’t reload everything every day</summary>
+    <div class="note-tag">Spark and data lakes · 2 min read</div>
+    <div class="note-body">
+      <p>If a table has years of history, reloading all of it daily wastes time. Incremental processing only handles the new or changed rows since the last run.</p>
+      <p>Partitioning the data, for example by date, helps Spark read only the partitions it needs.</p>
+    </div>
+  </details>
+</section>
+
+<section id="education">
+  <h2>Education and certifications</h2>
+  <div class="edu">
+    <div><h3>B.E. in Computer Engineering</h3><p>Dr. D. Y. Patil College of Engineering and Innovation, 2020 – 2023. CGPA 9.34</p></div>
+    <div><h3>Diploma in Computer Engineering</h3><p>Government Polytechnic Pune, 2017 – 2020. 85%</p></div>
+  </div>
+  <div class="certs">
+    <div class="cert"><h3>AWS Certified Data Engineer – Associate</h3><p>DEA-C01</p></div>
+    <div class="cert"><h3>AWS Certified Solutions Architect – Associate</h3></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>I’m happy to talk about data engineering roles and projects. The best way to reach me is email: <a href="mailto:vaishsswami@gmail.com">vaishsswami@gmail.com</a>.</p>
+</section>
+
+<footer>© Vaishnavi Swami · Pune, India</footer>
+</div>
+</body>
+</html>
